@@ -1,0 +1,38 @@
+
+@model Customer
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>title</title>
+    <style>
+        .field-validation-error{
+        color: red;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <h1>Form create new customer</h1>
+    @using (Html.BeginForm("ProcessCreate", "Customer", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary( true)
+        <div>
+            @Html.LabelFor(model => model.Id)
+            @Html.TextBoxFor(model => model.Id)
+            @Html.ValidationMessageFor(model => model.Id)
+        </div> 
+        <div>
+            @Html.LabelFor(model => model.Name)
+            @Html.TextBoxFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+        <div>
+            <input type="submit" value="Submit">
+            <input type="reset" value="Reset">  
+        </div>
+    }
+</div>
+</body>
+</html>
